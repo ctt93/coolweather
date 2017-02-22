@@ -39,6 +39,18 @@ public class CoolWeatherDB {
 	}
 	
 	//将Provice实例存储到数据库
+	public void saveProvice(Provice provice){
+		if(provice!=null){
+			ContentValues values=new ContentValues();
+			values.put("provice_name", provice.getProviceName());
+			values.put("provice_code",provice.getProviceCode());
+			
+			db.insert("Provice", null, values);
+		}
+	}
+	
+	
+	//从数据库读取全国所有省信息
 	public List<Provice> loadProvices(){
 		List<Provice> list=new ArrayList<Provice>();
 		Cursor cursor=db
